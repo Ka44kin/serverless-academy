@@ -1,0 +1,16 @@
+{
+  "name": "01_cli_sort",
+  "version": "1.0.0",
+  "description": "01_task",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ka44kin/serverless-academy.git"
+  },
+  "author": "Kachkin Eugen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ka44kin/serverless-academy/issues"
+  },
+  "homepage": "https://github.com/Ka44kin/serverless-academy#readme"
+}
