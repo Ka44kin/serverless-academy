@@ -1,0 +1,1 @@
+{"name":"bob","gender":"Male","age":"23"}{"name":"vova","gender":"Male","age":"33"}{"name":"Kate","gender":"Female","age":"24"}{"name":"lupa","gender":"Male","age":"1"}{"name":"pupa","gender":"Male","age":"2"}{"name":"kirill","gender":"Male","age":"26"}

@@ -1,0 +1,20 @@
+{
+    "name": "02_cli_database",
+    "version": "1.0.0",
+    "description": "02_task",
+    "main": "index.js",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ka44kin/serverless-academy.git"
+    },
+    "author": "Kachkin Eugen",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Ka44kin/serverless-academy/issues"
+    },
+    "homepage": "https://github.com/Ka44kin/serverless-academy#readme",
+    "dependencies": {
+        "inquirer": "^9.2.11"
+    }
+}
