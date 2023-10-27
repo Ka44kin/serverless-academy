@@ -1,0 +1,21 @@
+{
+  "name": "03_cli_telegram_bot",
+  "version": "1.0.0",
+  "description": "03_task",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ka44kin/serverless-academy.git"
+  },
+  "author": "Kachkin Eugen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ka44kin/serverless-academy/issues"
+  },
+  "homepage": "https://github.com/Ka44kin/serverless-academy#readme",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "node-telegram-bot-api": "^0.64.0"
+  }
+}
