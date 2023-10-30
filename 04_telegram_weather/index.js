@@ -33,11 +33,6 @@ bot.on('message', async (msg) => {
             let forecasts = response.data.list;
 
             const messageText = messageConstructor(forecasts);
-            if (messageText) {
-                bot.sendMessage(chatId, messageText);
-            } else {
-                bot.sendMessage(chatId, 'No weather data available.');
-            }
         } catch (error) {
             console.error(error);
             bot.sendMessage(chatId, 'Failed to receive data');
@@ -66,7 +61,6 @@ bot.on('message', async (msg) => {
                 text += `\n`;
             });
         }
-        console.log(interval)
         return text;
     };
 
