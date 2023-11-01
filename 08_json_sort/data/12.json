@@ -1,0 +1,13 @@
+{
+    "level1": {
+      "level2": {
+        "level3": {
+          "isDone": false,
+          "level4": {
+            "foo": "bar"
+          }
+        }
+      }
+    }
+  }
+  

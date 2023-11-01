@@ -1,0 +1,13 @@
+{
+    "root": {
+      "branch1": {
+        "isDone": true,
+        "branch2": {
+          "branch3": {
+            "leaf": "value"
+          }
+        }
+      }
+    }
+  }
+  
