@@ -1,9 +1,9 @@
 import TelegramBot from 'node-telegram-bot-api';
 import { Command } from 'commander';
 
-const program = new Command();
 const TOKEN = ''; // bot token
 const ID = ''; // your telegram id
+const program = new Command();
 
 const bot = new TelegramBot(TOKEN , { polling: true })
 

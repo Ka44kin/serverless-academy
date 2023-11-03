@@ -32,7 +32,7 @@ const query = async (endpoint) => {
     while (retrites > 0) {
         try {
             const response = await axios.get(endpoint)
-            if (response.data.isDone !== undefined){
+            if (response.data !== undefined){
                 console.log(`[Success] ${endpoint}`)
                 trueCount ++;
                 return ;
@@ -53,8 +53,8 @@ const main = async () => {
         await query(endpoint);
     }
 
-    console.log('True Count:', trueCount);
-    console.log('False Count:', falseCount);
+    console.log('True isDone Count:', trueCount);
+    console.log('False isDone Count:', falseCount);
 
 };
 

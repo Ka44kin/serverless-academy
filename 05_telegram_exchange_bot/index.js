@@ -4,11 +4,10 @@ import NodeCache from 'node-cache';
 const cache = new NodeCache({ stdTTL: 600 });
 
 
-const TOKEN = '';// Bot token
-const API_KEY = ''; // OpenWeather API key
-const url = `https://api.openweathermap.org/data/2.5/forecast?lat=50.390205&lon=30.154007&units=metric&appid=${API_KEY}`;
-const urlPrivat = 'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11';
-const urlMono = 'https://api.monobank.ua/bank/currency';
+const TOKEN = process.env['TOKEN'];
+const URL = process.env['URL'];
+const URL_PRIVAT = process.env['URL_PRIVAT'];
+const URL_MONO = process.env['URL_MONO'];
 
 
 const bot = new TelegramBot(TOKEN, { polling: true });
@@ -46,15 +45,9 @@ bot.on('message', async (msg) => {
     let monoCourse;
     let forecasts;
 
-    const currencyCode = {
-        USD: 840,
-        EUR: 978,
-        UAH: 980,
-      };
-
     const getWeather = async () => {
         try {
-            const response = await axios.get(url);
+            const response = await axios.get(URL);
             forecasts = response.data.list;
 
             messageConstructor(forecasts);
@@ -66,6 +59,7 @@ bot.on('message', async (msg) => {
 
     const messageConstructor = (forecasts) => {
         let text = '';
+
         if (interval === 3 ){
             forecasts = forecasts.slice(0, 8) 
             forecasts.forEach(el => {
@@ -89,17 +83,19 @@ bot.on('message', async (msg) => {
     };
 
     const getMonoCourse = async () => {
-        await 
-            axios
-                .get(urlMono)
-                .then(response => {
-                    monoCourse = response.data;
-                    if (cache.has('monoCourse') === false){
-                        cache.set('monoCourse', monoCourse, 3600);
-                        cachedCourse = cache.get('monoCourse')
-                        monoConstructor(cachedCourse, selectedCurrency);
-                    }
-                })
+        try {
+            const response = await axios.get(URL_MONO);
+            monoCourse = response.data;
+
+            if (cache.has('monoCourse') === false){
+                cache.set('monoCourse', monoCourse, 3600);
+                cachedCourse = cache.get('monoCourse')
+                monoConstructor(cachedCourse, selectedCurrency);
+            }
+        } catch (error) {
+            console.error(error);
+            bot.sendMessage(chatId, 'Failed to receive data');
+        }
     }
 
     const callMono = () => {
@@ -133,9 +129,9 @@ bot.on('message', async (msg) => {
 
     const getPrivateCourse = async () => {
         try {
-            const response = await axios.get(urlPrivat);
+            const response = await axios.get(URL_PRIVAT);
             const course = response.data;
-            const messageText = privateConstructor(course);
+            privateConstructor(course);
         } catch (error) {
             console.error(error);
             bot.sendMessage(chatId, 'Failed to receive data');

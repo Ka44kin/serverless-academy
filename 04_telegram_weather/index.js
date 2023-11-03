@@ -1,9 +1,8 @@
 import TelegramBot from 'node-telegram-bot-api';
 import axios from 'axios';
 
-const TOKEN = '';// Bot token
-const API_KEY = ''; // OpenWeather API key
-const url = `https://api.openweathermap.org/data/2.5/forecast?lat=50.390205&lon=30.154007&units=metric&appid=${API_KEY}`;
+const TOKEN = process.env['TOKEN'];
+const URL = process.env['URL'];
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 
@@ -29,10 +28,10 @@ bot.on('message', async (msg) => {
 
     const getWeather = async () => {
         try {
-            const response = await axios.get(url);
+            const response = await axios.get(URL);
             let forecasts = response.data.list;
 
-            const messageText = messageConstructor(forecasts);
+            messageConstructor(forecasts);
         } catch (error) {
             console.error(error);
             bot.sendMessage(chatId, 'Failed to receive data');
@@ -61,7 +60,7 @@ bot.on('message', async (msg) => {
                 text += `\n`;
             });
         }
-        return text;
+        bot.sendMessage(chatId, text);
     };
 
     switch (message) {

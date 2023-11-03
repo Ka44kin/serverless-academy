@@ -63,9 +63,9 @@ const app = async () => {
             }
         }
 
-        const usernameRequiredCount = [...usernameCount.entries()].filter(([username, count]) => count >= requiredCount);
+        const atLeastTenCounter = [...usernameCount.entries()].filter(([username, count]) => count >= requiredCount);
 
-        console.log('how many usernames occur in at least 10 files: ' + usernameRequiredCount.length);
+        console.log('how many usernames occur in at least 10 files: ' + atLeastTenCounter.length);
     }
     await uniqueValues(dir);
     await existInAllFiles(dir);
